@@ -1,0 +1,118 @@
+<p>Now comes the cliche. The creator, Brendan Eich, implemented it within weeks.
+The initial goal was to be able to write snippets to make the web more interactive, a little.
+So, that results in some drawbacks of this language.
+Dauglas Crockford summarized some of those in the book <em>JavaScript: The Good Parts</em>.</p>
+
+<p>Being lack of module system is one of those drawbacks.
+Some of you might heared or tried Node.js, that is module support of JavaScript done right.</p>
+
+<p>But there are some interesting facts of JavaScript in the browser land.</p>
+
+<ul>
+<li>You can insert a <code>script</code> tag via js with an <code>@src</code> to load js dynamically.</li>
+<li>You can listen on that <code>script</code> tag's <code>onload</code>, <code>onerror</code> or <code>oncomplete</code> events.</li>
+</ul>
+
+
+<p>Well, browsers have there inconsistencies in the event stuff of <code>script</code> tag.
+But it's solved in SeaJS! ...almost!</p>
+
+<p>With that two fact combined, we can do some thing like this:</p>
+
+<ol>
+<li>Load the bootstrap js</li>
+<li>Load different modules accordingly</li>
+<li>Perform tasks when those modules were loaded!</li>
+</ol>
+
+
+<p>That's what SeaJS is all about.</p>
+
+<p>We load it to bootstrap:</p>
+
+<div class="highlight"><pre><code class="html"><span class="c">&lt;!-- the library and your app --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;sea.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+
+<p>As a matter of fact, SeaJS also provide a shortcut for bootstraping your app.
+So instead of two script tags, you can load it via <code>@data-main</code>.</p>
+
+<div class="highlight"><pre><code class="html"><span class="c">&lt;!-- more compact way --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;sea.js&quot;</span> <span class="na">data-main=</span><span class="s">&quot;./app&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+
+<p><code>./</code> means relative to current page url. Given page url <code>http://foo.com/hello/world.html</code>,
+SeaJS will load <code>http://foo.com/hello/app.js</code>.</p>
+
+<p>The <code>./app</code> is called module id in SeaJS. Instead of relative way,
+you can write module id in absolute path. Well, not so absolute.
+In this example, <code>hello/app</code> refers to <code>base</code> path + module id + <code>.js</code>.</p>
+
+<p>What is <code>base</code> path?
+SeaJS uses <code>base</code> to resolve module uri if the module id does not start with an <code>.</code>.
+It can be configured:</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+    <span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>With <code>base</code> configured, now <code>hello/app</code> will be resolved to <code>http://foo.com/hello/app.js</code>.</p>
+
+<p>When you require module within module, the rules are the same.
+Relative paths will be solved relative to current module uri.</p>
+
+<div class="highlight"><pre><code class="js"><span class="c1">// http://foo.com/worker/carpenter.js</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">hammer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../util/hammer&#39;</span><span class="p">);</span>
+
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">nail</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">hammer</span><span class="p">.</span><span class="nx">smash</span><span class="p">();</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>That hammer is <code>http://foo.com/util/hammer.js</code>.</p>
+
+<p>The Only difference with Node.js, is that your module code (and your app code)
+needs to be wrapped in a typical <code>define</code> callback.</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">define</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">dependencies</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// module code.</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+
+<p>The <code>id</code> and <code>dependencies</code> parameters can be omitted.</p>
+
+<p><code>id</code> is used mostly when your project went online.
+All of your modules used in that page gets combined into one file.
+SeaJS can not guess which modules is which by that script's <code>@src</code>.
+Normally you will not need to use that.</p>
+
+<p><code>dependencies</code> is the other parameter used only in combined js files in normal circumstances.
+It list out what modules current module is dependent on.
+But you don't have to provide that list when you are writing a module.
+SeaJS will inspect your module callback and find out all of the <code>require</code> statements,
+and therefore, get all of your module's dependencies.</p>
+
+<p>That relies on important rules.</p>
+
+<ul>
+<li>You should not rename <code>require</code></li>
+<li>You should not rewrite <code>require</code></li>
+</ul>
+
+
+<p>Think <code>requrie</code> as a reserved word in JavaScript programming language.
+You're good to go.</p>

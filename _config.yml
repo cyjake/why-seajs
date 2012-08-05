@@ -1,0 +1,6 @@
+permalink: /:categories/:title
+pygments: true
+paginate: 1
+lsi: false
+markdown: rdiscount
+exclude: [Gemfile, Gemfile.lock, README.md, Rakefile]

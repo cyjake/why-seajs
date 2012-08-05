@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<div id="page">
+  {% for post in site.posts reversed %}
+  <div class="article-wrap article-{{ post.klass }}">
+    <article>
+      <h2>{{ post.title }}</h2>
+      <div class="subtitle">{{ post.subtitle }}</div>
+      <div class="content">{{ post.content }}</div>
+    </article>
+  </div>
+  {% endfor %}
+</div>
