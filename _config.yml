@@ -1,3 +1,4 @@
+baseurl: /why-seajs
 permalink: /:categories/:title
 pygments: true
 paginate: 1
