@@ -3,29 +3,18 @@ layout: default
 ---
 
 <div id="page">
-  {% for post in site.posts reversed %}
-  <div class="article-wrap article-{{ post.klass }}">
-    <article>
-      <h2>{{ post.title }}</h2>
-      <div class="subtitle">{{ post.subtitle }}</div>
-      <div class="content">{{ post.content }}</div>
-    </article>
-  </div>
+  {% for post in site.categories.en reversed %}
+  {% include _post.html %}
   {% endfor %}
-  <div class="disqus-wrap">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'why-seajs'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  {% include _disqus.html %}
+</div>
+<div id="nav">
+  <a href="{{ site.baseurl }}/zh/">中文版</a>
+  <div id="toc">
+    <ol>
+    {% for post in site.categories.en reversed %}
+      <li><a page-url="{{site.baseurl}}{{ post.url }}" href="#{{ post.klass }}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ol>
   </div>
 </div>

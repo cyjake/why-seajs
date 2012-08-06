@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div id="page">
+  {% for post in site.categories.zh reversed %}
+  {% include _post.html %}
+  {% endfor %}
+  {% include _disqus.html %}
+</div>
+<div id="nav">
+  <a href="{{ site.baseurl }}/">English</a>
+  <div id="toc">
+    <ol>
+    {% for post in site.categories.zh reversed %}
+      <li><a page-url="{{site.baseurl}}{{ post.url }}" href="#{{post.klass}}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ol>
+  </div>
+</div>

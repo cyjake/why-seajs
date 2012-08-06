@@ -6,7 +6,10 @@
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/screen.css">
 </head>
 <body>
-{{ content }}
-{% include _ga.html %}
+  <div id="page">
+    {% assign post = page %}
+    {% include _post.html %}
+  </div>
+  {% include _ga.html %}
 </body>
 </html>
