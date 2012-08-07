@@ -340,12 +340,12 @@ mark {
 /* Literal.Number.Integer.Long */
 #nav {
   position: fixed;
-  top: 140px;
+  top: 138px;
   left: 50%;
   width: 140px;
-  margin-left: -530px;
+  margin-left: -515px;
   text-align: right;
-  white-space: wrap;
+  background: #333;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   padding: 5px 0; }
@@ -360,7 +360,8 @@ mark {
       -webkit-transition: background 0.2s ease-in; }
 
 #toc {
-  margin-top: 26px; }
+  margin-top: 26px;
+  margin-bottom: 20px; }
   #toc li {
     display: block; }
 
@@ -385,11 +386,12 @@ mark {
     padding: 0 20px; }
   .article-wrap article {
     margin: 0 auto;
-    max-width: 730px;
+    max-width: 720px;
     text-align: left; }
   .article-wrap .content {
+    background: #efefef;
     background: rgba(255, 255, 255, 0.9);
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 2px; }
   .article-wrap p {
     padding: 5px 0; }
@@ -414,6 +416,7 @@ mark {
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.4) inset;
     padding: 7px 10px;
     margin: 10px 0;
+    background: #fff;
     background: rgba(255, 255, 255, 0.9); }
 
 .article-intro {
