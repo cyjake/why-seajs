@@ -403,7 +403,7 @@ mark {
     list-style: circle; }
   .article-wrap ol li {
     list-style: decimal; }
-  .article-wrap p em, .article-wrap p code {
+  .article-wrap p em, .article-wrap p code, .article-wrap ul em, .article-wrap ul code {
     border-radius: 2px;
     border: 1px solid #ccc;
     background: #efefef;
