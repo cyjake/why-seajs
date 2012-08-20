@@ -10,6 +10,15 @@
     {% assign post = page %}
     {% include _post.html %}
   </div>
+  <div id="nav">
+    {% if post.categories contains 'zh' %}
+    <a href="{{ site.baseurl }}/{{ post.categories }}/">回到页首</a>
+    <a href="/">关于作者</a>
+    {% else %}
+    <a href="{{ site.baseurl }}/">Back to Homepage</a>
+    <a href="/">About Author</a>
+    {% endif %}
+  </div>
   {% include _ga.html %}
 </body>
 </html>

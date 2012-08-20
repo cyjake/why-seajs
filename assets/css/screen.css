@@ -374,7 +374,7 @@ mark {
   .article-wrap h2, .article-wrap .subtitle {
     color: #fff;
     font-family: 'Courgette', cursive;
-    text-shadow: rgba(0, 0, 0, 0.5) 0 0 5px; }
+    text-shadow: rgba(0, 0, 0, 0.5) 0 1px 5px; }
   .article-wrap h2 {
     font-size: 60px;
     font-weight: 800;
@@ -432,6 +432,9 @@ mark {
 
 .article-dive-into {
   background: #1E2733; }
+
+.article-deploy {
+  background: #222D49; }
 
 .disqus-wrap {
   text-align: center;
