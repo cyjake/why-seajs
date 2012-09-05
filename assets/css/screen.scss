@@ -7,15 +7,15 @@
 
 #nav {
   position: fixed;
-  top: 138px;
+  top: 190px;
   left: 50%;
   width: 140px;
   margin-left: -515px;
   text-align: right;
-  background: #333;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 2px;
-  padding: 5px 0;
+
+  li {
+    display: block;
+  }
 
   a:link, a:visited {
     text-decoration: none;
@@ -29,14 +29,13 @@
       -webkit-transition: background 0.2s ease-in;
     }
   }
-}
 
-#toc {
-  margin-top: 26px;
-  margin-bottom: 20px;
-
-  li {
-    display: block;
+  .section {
+    background: #333;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    padding: 5px 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -129,6 +128,9 @@
 }
 .article-deploy {
   background: #222D49;
+}
+.article-digest {
+  background: #1E2733;
 }
 
 .disqus-wrap {

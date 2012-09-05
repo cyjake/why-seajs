@@ -9,13 +9,15 @@ layout: default
   {% include _disqus.html %}
 </div>
 <div id="nav">
-  <a href="{{ site.baseurl }}/zh/">中文版</a>
-  <div id="toc">
+  <div class="section toc">
     <ol>
     {% for post in site.categories.en reversed %}
       <li><a page-url="{{site.baseurl}}{{ post.url }}" href="#{{ post.klass }}">{{ post.title }}</a></li>
     {% endfor %}
     </ol>
   </div>
-  <a href="/">About Author</a>
+  <div class="section">
+    <a href="{{ site.baseurl }}/zh/">中文版</a>
+    <a href="/">About Author</a>
+  </div>
 </div>
