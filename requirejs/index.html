@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div id="page">
-  {% for post in site.categories.digest reversed %}
+  {% for post in site.categories.requirejs reversed %}
   {% include _post.html %}
   {% endfor %}
   {% include _disqus.html %}
@@ -11,7 +11,7 @@ layout: default
 <div id="nav">
   <div class="toc section">
     <ol>
-    {% for post in site.categories.digest reversed %}
+    {% for post in site.categories.requirejs reversed %}
       <li><a page-url="{{site.baseurl}}{{ post.url }}" href="#{{post.klass}}">{{ post.title }}</a></li>
     {% endfor %}
     </ol>
@@ -19,7 +19,7 @@ layout: default
   <div class="section">
     <a href="{{ site.baseurl }}/">English</a>
     <a href="{{ site.baseurl }}/zh/">SeaJS 所为何</a>
-    <a href="{{ site.baseurl }}/requirejs/">RequireJS 两则</a>
+    <a href="{{ site.baseurl }}/digest/">SeaJS 文摘</a>
     <a href="/">关于作者</a>
   </div>
 </div>
