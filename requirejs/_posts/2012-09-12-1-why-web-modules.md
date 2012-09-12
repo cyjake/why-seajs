@@ -11,7 +11,7 @@ layout: post
 ### 以下译文
 
 本文讨论为何网站模块化很有用，以及模块化的各种实现方式的可行性。同时，还有个
-[独立页面]({{ site.baseurl }}/digest/#why-amd) 讨论 RequireJS
+[独立页面]({{ site.baseurl }}/requirejs/#why-amd) 讨论 RequireJS
 采用的函数封装的设计驱使。
 
 ### 问题
@@ -180,5 +180,5 @@ require(["some/script.js"], function() {
  - 增加了技术负担。前端开发应该只需静态文件就好。
 
 更多关于函数封装格式的设计驱使与用例的细节，称作异步模块定义（Asynchronous Module Definition，AMD），
-可以在《[为何 AMD？]({{ site.baseurl }}/digest/#why-amd)》页面找到。
+可以在《[为何 AMD？]({{ site.baseurl }}/requirejs/#why-amd)》页面找到。
 
