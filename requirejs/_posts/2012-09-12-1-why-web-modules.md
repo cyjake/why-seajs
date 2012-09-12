@@ -5,6 +5,11 @@ klass: why-web-modules
 layout: post
 ---
 
+前一阵围观 [RequireJS 的文档](http://requirejs.org/)，做得很好看，发现两篇讲设计思想的文章，
+很符合我这《[Why SeaJS]({{ site.baseurl }})》的开篇立意，所以不妨拿来翻译一下，拓宽点思路。
+
+### 以下译文
+
 本文讨论为何网站模块化很有用，以及模块化的各种实现方式的可行性。同时，还有个
 [独立页面]({{ site.baseurl }}/digest/#why-amd) 讨论 RequireJS
 采用的函数封装的设计驱使。
