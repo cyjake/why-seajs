@@ -1,6 +1,4 @@
 baseurl: /why-seajs
 permalink: /:categories/:title
-pygments: true
 lsi: false
-markdown: rdiscount
-exclude: [Gemfile, Gemfile.lock, README.md, Rakefile]
+exclude: [README.md]
