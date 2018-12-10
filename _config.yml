@@ -2,3 +2,5 @@ baseurl: /why-seajs
 permalink: /:categories/:title
 lsi: false
 exclude: [README.md]
+sass:
+  sass_dir: _sass
