@@ -3,7 +3,7 @@
 
 @import 'reset';
 @import 'syntax/github';
-@import url(http://fonts.googleapis.com/css?family=Courgette);
+@import url(https://fonts.googleapis.com/css?family=Courgette);
 
 #nav {
   position: fixed;
@@ -26,7 +26,7 @@
 
     &:hover {
       background: #f50;
-      -webkit-transition: background 0.2s ease-in;
+      transition: background 0.2s ease-in;
     }
   }
 
